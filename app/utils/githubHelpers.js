@@ -37,7 +37,7 @@ function calculateScores (players) {
 export function getPlayersInfo (players) {
   return axios.all(players.map((username) => getUserInfo(username)))
     .then((info) => info.map((user) => user.data))
-    .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
+    .catch((err) => console.warn('Error in getPlayersInfo: ', err))
 }
 
 export function battle (players) {
@@ -45,5 +45,5 @@ export function battle (players) {
   const playerTwoData = getPlayersData(players[1]);
   return axios.all([playerOneData, playerTwoData])
     .then(calculateScores)
-    .catch((err) => {console.warn('Error in getPlayersInfo: ', err)})
+    .catch((err) => console.warn('Error in getPlayersInfo: ', err))
 }
